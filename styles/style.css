@@ -19,18 +19,16 @@ header {
     background-color: #fee11b;
     text-align: center;
     width: 100%;
-    padding: 15px;
 }
 
 header h1 {
     margin: 0;
     font-size: 3em;
-    line-height: 3em;
+    line-height: 3.5em;
 }
 
 .container {
     position: relative;
-    /*background-color: rgba(0, 255, 0, 0.29);*/
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -60,9 +58,7 @@ header h1 {
     background-color: #fee11b;
     width: 100%;
     max-width: 100%;
-    /*margin: 15px;*/
-    padding: 15px;
-    padding-bottom: 70px;
+    padding-bottom: 7em;
 }
 
 .list {
@@ -84,7 +80,6 @@ header h1 {
 .list .item {
     display: flex;
     flex-direction: column;
-    /*height: 100px;*/
     margin-bottom: 15px;
     padding: 10px;
 
@@ -101,9 +96,15 @@ header h1 {
     border-radius: 5px;
 }
 
+.item-row {
+    display: flex;
+    justify-content: flex-start;
+    padding-right: 1em;
+    margin-top: 1.2em;
+}
+
+
 .list .item:hover {
-    /*cursor: pointer;*/
-    /*opacity: 0.8;*/
     -webkit-transform: translateY(-3px);
     transform: translateY(-3px);
 }
@@ -111,16 +112,28 @@ header h1 {
 .list .item span.title {
     font-size: 1.7em;
     color: black;
+    margin-top: 0.4em;
+}
+
+.list .item span.school {
 
 }
 
 .list .item span.teacher {
-    color: #ffcfdc;
+    color: cornflowerblue;
     font-size: 1em;
+    margin-left: 1em;
+    white-space: nowrap ;
 }
 
 .list .item span.teacher:hover {
     cursor: pointer;
+}
+
+.list .item span.date {
+    display: flex;
+    align-self: flex-end;
+    margin-top: 2em;
 }
 
 @media only screen
@@ -129,7 +142,5 @@ and (max-device-width: 480px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
     body {font-size:3.2rem;}
-    /*h1 {font-size:8rem;}*/
-    /*.list .item span.title {font-size:  1rem;}*/
 }
 

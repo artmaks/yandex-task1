@@ -187,6 +187,50 @@ header h1 {
     background-color: #f1f3f2;
 }
 
+/* --------- Tooltip --------*/
+.tooltip {
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    white-space: pre-line;
+    text-align: left;
+    visibility: hidden;
+    max-width: 700px;
+    min-width: 300px;
+    background-color: yellow;
+    color: black;
+    padding: 15px;
+    border-radius: 6px;
+    margin-left: 15px;
+
+    position: absolute;
+    z-index: 10;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext .name {
+    font-weight: 800;
+}
+
+.tooltip .tooltiptext .about {
+    line-height: 1.4em;
+}
+
+.tooltip .tooltiptext img {
+    max-width: 100px;
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    border-radius: 200px;
+}
+
 @media only screen
 and (min-device-width: 320px)
 and (max-device-width: 480px)
@@ -198,6 +242,10 @@ and (orientation: portrait) {
     }
     .filters {
         padding-bottom: 1.5em;
+    }
+    .tooltip .tooltiptext {
+        right: 90px;
+        margin-top: 70px;
     }
 }
 

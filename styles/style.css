@@ -16,15 +16,22 @@ a {
 }
 
 input {
-    height: 3em;
+    font-size: 2rem;
+    line-height: 1rem;
+    padding: 5px;
+}
+
+.filters form {
+    display: flex;
+    justify-content: space-around;
 }
 
 input.filter-search {
-    width: 49%;
+    width: 45%;
 }
 
 input.filter-date {
-    width: 24%;
+    width: 20%;
 }
 
 header {
@@ -153,5 +160,11 @@ and (max-device-width: 480px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
     body {font-size:3.2rem;}
+    input {
+        height: 5em;
+    }
+    .filters {
+        padding-bottom: 1.5em;
+    }
 }
 

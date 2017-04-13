@@ -156,23 +156,25 @@ header h1 {
 
 .tabs {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: stretch;
     width: 100%;
 }
 
 .tabs .tab {
-    display: table-cell;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     border: 1px solid black;
-    border-right: 0px;
+    border-left: 0;
     padding: 1em;
     text-align: center;
-    vertical-align: middle;
 }
 
-.tabs .tab:last-child {
-    border-right: 1px solid black;
+.tabs .tab:first-child {
+    border-left: 1px solid black;
 }
 
 .tabs .tab.active, .tabs .tab.active:hover {

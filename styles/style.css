@@ -1,12 +1,14 @@
 html {
     height: 100%;
     font-family: Helvetica Neue, Helvetica, sans-serif;
+    font-size: 62.5%;
 }
 
 body {
     background: #f1f3f2;
     margin: 0;
     min-height: 100%;
+    font-size: 1.2rem;
 }
 
 a {
@@ -21,9 +23,9 @@ header {
 }
 
 header h1 {
-    margin: 0px;
-    font-size: 42px;
-    line-height: 75px;
+    margin: 0;
+    font-size: 3em;
+    line-height: 3em;
 }
 
 .container {
@@ -68,7 +70,7 @@ header h1 {
     flex-direction: column;
     justify-self: stretch;
     background-color: white;
-    width: 800px;
+    /*width: 800px;*/
     max-width: 100%;
     /*margin: 15px;*/
     margin-top: 0px;
@@ -82,7 +84,7 @@ header h1 {
 .list .item {
     display: flex;
     flex-direction: column;
-    height: 100px;
+    /*height: 100px;*/
     margin-bottom: 15px;
     padding: 10px;
 
@@ -107,14 +109,27 @@ header h1 {
 }
 
 .list .item span.title {
-    font-size: 18px;
+    font-size: 1.7em;
     color: black;
+
 }
 
 .list .item span.teacher {
     color: #ffcfdc;
+    font-size: 1em;
 }
 
 .list .item span.teacher:hover {
     cursor: pointer;
 }
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    body {font-size:3.2rem;}
+    /*h1 {font-size:8rem;}*/
+    /*.list .item span.title {font-size:  1rem;}*/
+}
+

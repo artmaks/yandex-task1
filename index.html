@@ -14,13 +14,13 @@
 
         <div class="row full-height">
             <div class="filters">
-                <form>
-                    <input class="filter-search" type="text" placeholder="Преподаватель"/>
-                    <input class="filter-date" type="date" placeholder="Дата"/>
-                    <input class="filter-date" type="date" placeholder="Дата"/>
+                <form id="filters-form">
+                    <input class="filter-search" id="search-input" type="text" placeholder="Преподаватель"/>
+                    <input class="filter-date" id="date-from" type="date" placeholder="Дата"/>
+                    <input class="filter-date" id="date-to" type="date" placeholder="Дата"/>
                 </form>
             </div>
-            <div class="tabs">
+            <div class="tabs" id="tabs">
                 <div class="tab active">
                     Все школы
                 </div>
@@ -37,7 +37,7 @@
                     Школа менеджмента
                 </div>
             </div>
-            <div class="list">
+            <div class="list" id="list">
                 <div class="item">
                     <span class="title">Лекция 2. Работа с сенсорным пользовательским вводом</span>
                     <div class="item-row">
@@ -120,6 +120,18 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script src="js/index.js"></script>
+    <div class="item" id="template-item">
+        <span class="title">Лекция 6. Клиентская оптимизация: мобильные устройства и инструменты</span>
+        <div class="item-row">
+            <span class="school">Школа мобильной разработки, Школа дизайна</span>
+            <span class="teacher">Иван Карев</span>
+        </div>
+        <span class="date">
+            <span class="date-text">1 мая</span>
+            <span class="icon-date"></span>
+        </span>
     </div>
 </body>
 </html>

@@ -159,9 +159,14 @@ function setupItem(item, data) {
 
 function showList(list, data) {
     clearHTML(list);
-    data.map(function (a) {
-        list.appendChild(setupItem(getItemObjectHTML(), a));
-    });
+    
+    if(data.length > 0) {
+        data.map(function (a) {
+            list.appendChild(setupItem(getItemObjectHTML(), a));
+        });
+    } else {
+        setHTML(list, '<div class="empty">Не существует лекций для выбранных фильтров.</div>')
+    }
 }
 
 function getFilteredData(data, name, date1, date2) {

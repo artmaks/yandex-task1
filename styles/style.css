@@ -32,6 +32,8 @@ input {
 
 .filters form span {
     font-weight: 800;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 input.filter-search {

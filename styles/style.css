@@ -216,6 +216,7 @@ header h1 {
 }
 
 .tooltip .tooltiptext .name {
+    display: block;
     font-weight: 800;
 }
 

@@ -3,37 +3,43 @@ var schedule = [
         title : 'Лекция 1. Адаптивная вёрстка',
         school : 'Школа разработки интерфейсов',
         teacher : 'Дмитрий Душкин',
-        date : '03/03/2017'
+        date : '03/03/2017',
+        place : 'Синий кит'
     },
     {
         title : 'Лекция 2. Работа с сенсорным пользовательским вводом',
         school : 'Школа разработки интерфейсов',
         teacher : 'Дмитрий Душкин',
-        date : '03/17/2017'
+        date : '03/17/2017',
+        place : 'Синий кит'
     },
     {
         title : 'Лекция 3. Мультимедиа: возможности браузера',
         school : 'Школа разработки интерфейсов',
         teacher : 'Максим Васильев',
-        date : '04/01/2017'
+        date : '04/01/2017',
+        place : 'Синий кит'
     },
     {
         title : 'Лекция 4. Нативные приложения на веб-технологиях',
         school : 'Школа разработки интерфейсов',
         teacher : 'Сергей Бережной',
-        date : '04/15/2017'
+        date : '04/15/2017',
+        place : 'Синий кит'
     },
     {
         title : 'Лекция 5. Клиентская оптимизация: базовые знания и лучшие практики',
         school : 'Школа разработки интерфейсов',
         teacher : 'Андрей Морозов',
-        date : '04/20/2017'
+        date : '04/20/2017',
+        place : 'Синий кит'
     },
     {
         title : 'Лекция 6. Клиентская оптимизация: мобильные устройства и инструменты',
         school : 'Школа разработки интерфейсов',
         teacher : 'Иван Карев',
-        date : '05/01/2017'
+        date : '05/01/2017',
+        place : 'Синий кит'
     }
 ];
 
@@ -123,6 +129,7 @@ function setupItem(item, data) {
     const school = item.querySelector('.school');
     const teacher = item.querySelector('.teacher-text');
     const date = item.querySelector('.date-text');
+    const place = item.querySelector('.place-text');
 
     const teacherName = item.querySelector('.name');
     const teacherAbout = item.querySelector('.about');
@@ -143,6 +150,7 @@ function setupItem(item, data) {
     setHTML(title, data.title);
     setHTML(school, data.school);
     setHTML(teacher, data.teacher);
+    setHTML(place, data.place);
     setHTML(date, strDate);
     setHTML(name, teacher);
 

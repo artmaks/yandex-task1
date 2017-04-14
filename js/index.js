@@ -48,6 +48,8 @@ var teachers = {
     }
 };
 
+var currentSchool = '';
+
 function clearHTML(element) {
     element.innerHTML = '';
 }
@@ -80,6 +82,14 @@ function getFormatDate(date) {
 function getScheduleForTeacher(data, name) {
     return data.filter(function (a) {
         if(a.teacher.indexOf(name) !== -1) {
+            return true;
+        }
+    });
+}
+
+function getScheduleForSchool(data) {
+    return data.filter(function (a) {
+        if(a.school.indexOf(currentSchool) !== -1) {
             return true;
         }
     });
@@ -148,6 +158,7 @@ function showList(list, data) {
 
 function getFilteredData(data, name, date1, date2) {
     var filtered = getScheduleForTeacher(data, name);
+    filtered = getScheduleForSchool(filtered);
     filtered = !isNaN(date1.getTime()) ? getScheduleMinDate(filtered, date1) : filtered;
     filtered = !isNaN(date2.getTime()) ? getScheduleMaxDate(filtered, date2) : filtered;
     return filtered;
@@ -161,10 +172,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const searchInput = document.getElementById('search-input');
     const dateFrom = document.getElementById('date-from');
     const dateTo = document.getElementById('date-to');
+    const tabItems = Array.prototype.slice.call(tabs.querySelectorAll('.tab')); // convert to real array (for map function)
 
     showList(list, schedule);
 
-    form.addEventListener("submit", function(event){
+    form.addEventListener("submit", function(event) {
         event.preventDefault();
     });
 
@@ -194,4 +206,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
         const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
         showList(list, filtered);
     });
+
+    tabItems.map(function (tab) {
+        tab.addEventListener("click", function () {
+            currentSchool = this.getAttribute("school");
+            const searchInputValue = searchInput.value;
+            const dateFromValue = new Date(dateFrom.value);
+            const dateToValue = new Date(dateTo.value);
+
+            const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
+            showList(list, filtered);
+
+            tabItems.map(function (a) {
+                a.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
 });

@@ -77,6 +77,39 @@ function getFormatDate(date) {
     return day + ' ' + monthNames[month] + ' ' + year;
 }
 
+function getScheduleForTeacher(data, name) {
+    const filterData = data.filter(function (a) {
+        if(a.teacher.indexOf(name) !== -1) {
+            return true;
+        }
+    });
+    return filterData;
+}
+
+function getScheduleMinDate(data, date) {
+    const filterData = data.filter(function (a) {
+        const itemDate = new Date(a.date);
+        itemDate.setHours(0,0,0,0);
+        date.setHours(0,0,0,0);
+        if(itemDate.getTime() >= date.getTime()) {
+            return true;
+        }
+    });
+    return filterData;
+}
+
+function getScheduleMaxDate(data, date) {
+    const filterData = data.filter(function (a) {
+        const itemDate = new Date(a.date);
+        itemDate.setHours(0,0,0,0);
+        date.setHours(0,0,0,0);
+        if(itemDate.getTime() <= date.getTime()) {
+            return true;
+        }
+    });
+    return filterData;
+}
+
 function setupItem(item, data) {
     const title = item.querySelector('.title');
     const school = item.querySelector('.school');
@@ -112,7 +145,13 @@ function showList(list, data) {
     data.map(function (a) {
         list.appendChild(setupItem(getItemObjectHTML(), a));
     });
+}
 
+function getFilteredData(data, name, date1, date2) {
+    var filtered = getScheduleForTeacher(data, name);
+    filtered = !isNaN(date1.getTime()) ? getScheduleMinDate(filtered, date1) : filtered;
+    filtered = !isNaN(date2.getTime()) ? getScheduleMaxDate(filtered, date2) : filtered;
+    return filtered;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -132,12 +171,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     searchInput.addEventListener("change", function (event) {
-        const val = searchInput.value;
-        const filterData = schedule.filter(function (a) {
-            if(a.teacher.indexOf(val) !== -1) {
-                return true;
-            }
-        });
-        showList(list, filterData);
-    }, false);
+        const searchInputValue = searchInput.value;
+        const dateFromValue = new Date(dateFrom.value);
+        const dateToValue = new Date(dateTo.value);
+
+        const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
+        showList(list, filtered);
+    });
+
+    dateFrom.addEventListener("change", function (event) {
+        const searchInputValue = searchInput.value;
+        const dateFromValue = new Date(dateFrom.value);
+        const dateToValue = new Date(dateTo.value);
+
+        const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
+        showList(list, filtered);
+    });
+
+    dateTo.addEventListener("change", function (event) {
+        const searchInputValue = searchInput.value;
+        const dateFromValue = new Date(dateFrom.value);
+        const dateToValue = new Date(dateTo.value);
+
+        const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
+        showList(list, filtered);
+    });
 });

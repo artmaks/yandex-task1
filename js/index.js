@@ -78,36 +78,34 @@ function getFormatDate(date) {
 }
 
 function getScheduleForTeacher(data, name) {
-    const filterData = data.filter(function (a) {
+    return data.filter(function (a) {
         if(a.teacher.indexOf(name) !== -1) {
             return true;
         }
     });
-    return filterData;
+}
+
+function filterScheduleByDate(data, date, comparator) {
+    return data.filter(function (a) {
+        const itemDate = new Date(a.date);
+        itemDate.setHours(0,0,0,0);
+        date.setHours(0,0,0,0);
+        if(comparator(itemDate.getTime(), date.getTime())) {
+            return true;
+        }
+    });
 }
 
 function getScheduleMinDate(data, date) {
-    const filterData = data.filter(function (a) {
-        const itemDate = new Date(a.date);
-        itemDate.setHours(0,0,0,0);
-        date.setHours(0,0,0,0);
-        if(itemDate.getTime() >= date.getTime()) {
-            return true;
-        }
+    return filterScheduleByDate(data, date, function (date1, date2) {
+        return date1 >= date2;
     });
-    return filterData;
 }
 
 function getScheduleMaxDate(data, date) {
-    const filterData = data.filter(function (a) {
-        const itemDate = new Date(a.date);
-        itemDate.setHours(0,0,0,0);
-        date.setHours(0,0,0,0);
-        if(itemDate.getTime() <= date.getTime()) {
-            return true;
-        }
+    return filterScheduleByDate(data, date, function (date1, date2) {
+        return date1 <= date2;
     });
-    return filterData;
 }
 
 function setupItem(item, data) {
@@ -121,12 +119,6 @@ function setupItem(item, data) {
     const teacherPhoto = item.querySelector('.teacher-photo');
 
     const strDate = getFormatDate(new Date(data.date));
-
-    setHTML(title, data.title);
-    setHTML(school, data.school);
-    setHTML(teacher, data.teacher);
-    setHTML(date, strDate);
-    setHTML(name, teacher);
     teacherData = teachers[data.teacher];
 
     if(teacherData) {
@@ -137,6 +129,13 @@ function setupItem(item, data) {
         const tooltip = item.querySelector('.tooltiptext');
         tooltip.parentNode.removeChild(tooltip);
     }
+
+    setHTML(title, data.title);
+    setHTML(school, data.school);
+    setHTML(teacher, data.teacher);
+    setHTML(date, strDate);
+    setHTML(name, teacher);
+
     return item;
 }
 
@@ -167,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     form.addEventListener("submit", function(event){
         event.preventDefault();
-
     });
 
     searchInput.addEventListener("change", function (event) {

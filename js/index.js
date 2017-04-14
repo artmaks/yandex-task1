@@ -37,6 +37,17 @@ var schedule = [
     }
 ];
 
+var teachers = {
+    "Дмитрий Душкин" : {
+        photo : "assets/imgs/teachers/dmitry.jpeg",
+        about : "Кандидат технических наук, научный сотрудник ИПУ РАН с 2008 по 2013. " +
+        "Пришёл в Яндекс.Картинки в 2014 году, отвечал за мобильную версию и рост " +
+        "производительности сервиса. В 2016 перешёл в Yandex Data Factory," +
+        "где разрабатывает интерфейсы и дизайн веб-приложений для B2B."
+
+    }
+};
+
 function clearHTML(element) {
     element.innerHTML = '';
 }
@@ -69,8 +80,12 @@ function getFormatDate(date) {
 function setupItem(item, data) {
     const title = item.querySelector('.title');
     const school = item.querySelector('.school');
-    const teacher = item.querySelector('.teacher');
+    const teacher = item.querySelector('.teacher-text');
     const date = item.querySelector('.date-text');
+
+    const teacherName = item.querySelector('.name');
+    const teacherAbout = item.querySelector('.about');
+    const teacherPhoto = item.querySelector('.teacher-photo');
 
     const strDate = getFormatDate(new Date(data.date));
 
@@ -78,7 +93,17 @@ function setupItem(item, data) {
     setHTML(school, data.school);
     setHTML(teacher, data.teacher);
     setHTML(date, strDate);
+    setHTML(name, teacher);
+    teacherData = teachers[data.teacher];
 
+    if(teacherData) {
+        setHTML(teacherName, data.teacher);
+        setHTML(teacherAbout, teacherData.about);
+        teacherPhoto.src = teacherData.photo;
+    } else {
+        const tooltip = item.querySelector('.tooltiptext');
+        tooltip.parentNode.removeChild(tooltip);
+    }
     return item;
 }
 

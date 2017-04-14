@@ -26,6 +26,8 @@ input {
     justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .filters form span {

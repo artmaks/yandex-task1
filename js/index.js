@@ -124,11 +124,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const dateFrom = document.getElementById('date-from');
     const dateTo = document.getElementById('date-to');
 
-
     showList(list, schedule);
 
     form.addEventListener("submit", function(event){
         event.preventDefault();
-        // TODO
+
     });
+
+    searchInput.addEventListener("change", function (event) {
+        const val = searchInput.value;
+        const filterData = schedule.filter(function (a) {
+            if(a.teacher.indexOf(val) !== -1) {
+                return true;
+            }
+        });
+        showList(list, filterData);
+    }, false);
 });

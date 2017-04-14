@@ -264,6 +264,8 @@ and (orientation: portrait) {
         font-size: 1.5em;
     }
     input.filter-search {
+        padding-top: 0.7em;
+        padding-bottom: 0.7em;
         width: 100%;
     }
     .filter-dates {

@@ -37,14 +37,14 @@ input {
 }
 
 input.filter-search {
-    width: 45%;
+    width: 30%;
 }
 
 .filter-dates {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
+    width: 65%;
 }
 
 input.filter-date {

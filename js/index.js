@@ -143,6 +143,7 @@ function setupItem(item, data) {
 
     if(itemDate.getTime() < (new Date()).getTime()) {
         setHTML(materials, '<a href="#">Материалы</a>');
+        item.querySelector('.materials .icon-materials').style.display = 'block';
         title.classList.add('finished');
         if(!showFinishedLectures)
             return document.createElement('div');

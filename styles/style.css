@@ -164,12 +164,16 @@ header h1 {
     cursor: pointer;
 }
 
-.list .item span.date, .list .item span.place {
+.list .item span.date, .list .item span.place, .list .item span.materials {
     display: flex;
     align-items: center;
     align-self: flex-end;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.list .item span.materials {
+    margin-top: 0;
 }
 
 .list .item span.place {

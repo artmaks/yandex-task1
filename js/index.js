@@ -130,12 +130,14 @@ function setupItem(item, data) {
     const teacher = item.querySelector('.teacher-text');
     const date = item.querySelector('.date-text');
     const place = item.querySelector('.place-text');
+    const materials = item.querySelector('.materials-text');
 
     const teacherName = item.querySelector('.name');
     const teacherAbout = item.querySelector('.about');
     const teacherPhoto = item.querySelector('.teacher-photo');
 
-    const strDate = getFormatDate(new Date(data.date));
+    const itemDate = new Date(data.date);
+    const strDate = getFormatDate(itemDate);
     teacherData = teachers[data.teacher];
 
     if(teacherData) {
@@ -145,6 +147,10 @@ function setupItem(item, data) {
     } else {
         const tooltip = item.querySelector('.tooltiptext');
         tooltip.parentNode.removeChild(tooltip);
+    }
+
+    if(itemDate.getTime() < (new Date()).getTime()) {
+        setHTML(materials, '<a href="#">Материалы</a>')
     }
 
     setHTML(title, data.title);

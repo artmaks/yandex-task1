@@ -55,6 +55,7 @@ var teachers = {
 };
 
 var currentSchool = '';
+var showFinishedLectures = false;
 
 function clearHTML(element) {
     element.innerHTML = '';
@@ -140,6 +141,13 @@ function setupItem(item, data) {
     const strDate = getFormatDate(itemDate);
     teacherData = teachers[data.teacher];
 
+    if(itemDate.getTime() < (new Date()).getTime()) {
+        setHTML(materials, '<a href="#">Материалы</a>');
+        title.classList.add('finished');
+        if(!showFinishedLectures)
+            return document.createElement('div');
+    }
+
     if(teacherData) {
         setHTML(teacherName, data.teacher);
         setHTML(teacherAbout, teacherData.about);
@@ -147,11 +155,6 @@ function setupItem(item, data) {
     } else {
         const tooltip = item.querySelector('.tooltiptext');
         tooltip.parentNode.removeChild(tooltip);
-    }
-
-    if(itemDate.getTime() < (new Date()).getTime()) {
-        setHTML(materials, '<a href="#">Материалы</a>');
-        title.classList.add('finished');
     }
 
     setHTML(title, data.title);
@@ -192,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const searchInput = document.getElementById('search-input');
     const dateFrom = document.getElementById('date-from');
     const dateTo = document.getElementById('date-to');
+    const showFinished = document.querySelector('.show-finished');
     const tabItems = Array.prototype.slice.call(tabs.querySelectorAll('.tab')); // convert to real array (for map function)
 
     showList(list, schedule);
@@ -242,6 +246,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
             });
             this.classList.add('active');
         });
+    });
+
+    showFinished.addEventListener("click", function (event) {
+        event.preventDefault();
+        showFinishedLectures = !showFinishedLectures;
+        console.log(showFinishedLectures)
+        this.text = showFinishedLectures ? 'Скрыть прошедшие лекции' : 'Показать прошедшие лекции';
+
+        const searchInputValue = searchInput.value;
+        const dateFromValue = new Date(dateFrom.value);
+        const dateToValue = new Date(dateTo.value);
+
+        const filtered = getFilteredData(schedule, searchInputValue, dateFromValue, dateToValue);
+        showList(list, filtered);
     });
 
 });

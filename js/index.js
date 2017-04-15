@@ -150,7 +150,8 @@ function setupItem(item, data) {
     }
 
     if(itemDate.getTime() < (new Date()).getTime()) {
-        setHTML(materials, '<a href="#">Материалы</a>')
+        setHTML(materials, '<a href="#">Материалы</a>');
+        title.classList.add('finished');
     }
 
     setHTML(title, data.title);

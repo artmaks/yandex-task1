@@ -3,6 +3,7 @@
 Страница с описанием задания: https://academy.yandex.ru/events/frontend/shri_msk-2017/
 
 Демо (со статическим контентом): https://artmaks.github.io/yandex-task1/
+
 Демо (с подключенным API из второго задания): https://yandex-schedule.herokuapp.com/
 
 ### Введение

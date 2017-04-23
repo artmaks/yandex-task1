@@ -1,10 +1,10 @@
 # Яндекс мобилизация. Задание №1
 
-Страница с описанием задания: https://academy.yandex.ru/events/frontend/shri_msk-2017/
+[Страница с описанием задания](https://academy.yandex.ru/events/frontend/shri_msk-2017/)
 
-Демо (со статическим контентом): https://artmaks.github.io/yandex-task1/
+[Демо (со статическим контентом)](https://artmaks.github.io/yandex-task1/)
 
-Демо (с подключенным API из второго задания): https://yandex-schedule.herokuapp.com/
+[Демо (с подключенным API из второго задания)](https://yandex-schedule.herokuapp.com/)
 
 ### Введение
 
@@ -53,6 +53,6 @@
 
 Во втором отборочном задании, была реализована и подключена библиотека для управления расписанием.
 
-Второе задание: https://github.com/artmaks/yandex-task2
+[Второе задание](https://github.com/artmaks/yandex-task2)
 
 

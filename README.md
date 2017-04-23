@@ -4,7 +4,7 @@
 
 [Демо (со статическим контентом)](https://artmaks.github.io/yandex-task1/)
 
-[Демо (с подключенным API из второго задания)](https://yandex-schedule.herokuapp.com/)
+[Демо (с подключенным API из второго задания)](https://yandex-schedule.herokuapp.com/) **(Рекомендуется к просмотру!)**
 
 ### Введение
 
